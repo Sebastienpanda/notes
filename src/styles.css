@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@layer base {
+    *, html, body {
+        font-family: 'Noto Serif', serif;
+        line-height: 120%;
+    }
+}
+
 @utility container {
     width: 100%;
     margin-inline: auto;
