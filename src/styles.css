@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+@plugin "@tailwindcss/forms";
+
 @layer base {
     *, html, body {
         font-family: 'Noto Serif', serif;
         line-height: 120%;
+        font-weight: 400;
+    }
+
+    button {
+        @apply cursor-pointer
     }
 }
 
@@ -65,3 +72,16 @@
     --color-red-100: oklch(0.909 0.047 13.202);
 }
 
+@layer components {
+    .label {
+        @apply text-sm text-neutral-950 font-medium
+    }
+
+    .input {
+        @apply rounded-lg border-neutral-300 placeholder:text-neutral-500 text-sm
+    }
+
+    .custom-transition {
+        @apply transition duration-300 ease-in-out
+    }
+}
