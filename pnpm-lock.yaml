@@ -66,9 +66,6 @@ importers:
       angular-eslint:
         specifier: 20.1.1
         version: 20.1.1(chokidar@4.0.3)(eslint@9.29.0(jiti@2.4.2))(typescript-eslint@8.34.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(typescript@5.8.3)
-      daisyui:
-        specifier: ^5.0.43
-        version: 5.0.43
       eslint:
         specifier: ^9.29.0
         version: 9.29.0(jiti@2.4.2)
@@ -1635,9 +1632,6 @@ packages:
 
   custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
-
-  daisyui@5.0.43:
-    resolution: {integrity: sha512-2pshHJ73vetSpsbAyaOncGnNYL0mwvgseS1EWy1I9Qpw8D11OuBoDNIWrPIME4UFcq2xuff3A9x+eXbuFR9fUQ==}
 
   date-format@4.0.14:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
@@ -4763,8 +4757,6 @@ snapshots:
   css-what@6.1.0: {}
 
   custom-event@1.0.1: {}
-
-  daisyui@5.0.43: {}
 
   date-format@4.0.14: {}
 

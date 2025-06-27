@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-@plugin "daisyui";
-
-@theme {
-    --color-*: initial;
-}
-
 @utility container {
     width: 100%;
     margin-inline: auto;
@@ -33,3 +27,34 @@
         max-width: 75rem;
     }
 }
+
+@theme {
+    --color-*: initial;
+    /* Neutral Color */
+    --color-neutral-950: oklch(0.183 0.02 265.901);
+    --color-neutral-900: oklch(0.225 0.02 275.882);
+    --color-neutral-800: oklch(0.267 0.021 276.841);
+    --color-neutral-700: oklch(0.309 0.021 265.9);
+    --color-neutral-600: oklch(0.46 0.024 267.038);
+    --color-neutral-500: oklch(0.569 0.021 265.87);
+    --color-neutral-400: oklch(0.705 0.022 264.425);
+    --color-neutral-300: oklch(0.853 0.014 262.375);
+    --color-neutral-200: oklch(0.918 0.009 258.337);
+    --color-neutral-100: oklch(0.969 0.005 258.325);
+    --color-neutral-50: oklch(0.975 0.005 258.325);
+    --color-neutral-0: oklch(1 0 89.876);
+
+    /* Blue Color */
+    --color-blue-700: #2547D0;
+    --color-blue-500: #335CFF;
+    --color-blue-50: #EBF1FF;
+
+    /* Green Color */
+    --color-green-500: oklch(0.714 0.176 152.986);
+    --color-green-100: oklch(0.954 0.049 167.456);
+
+    /* Red Color */
+    --color-red-500: oklch(0.647 0.229 22.467);
+    --color-red-100: oklch(0.909 0.047 13.202);
+}
+
