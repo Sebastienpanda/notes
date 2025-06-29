@@ -1,6 +1,9 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {Eye, EyeOff, LucideAngularModule} from 'lucide-angular';
+import {LucideAngularModule} from 'lucide-angular';
+import {InputField} from '@shared/components/form/input/input/input-field';
+import {NonNullableFormBuilder, Validators} from '@angular/forms';
+import {confirmPasswordValidator} from '@core/confirm-password-validator';
 
 @Component({
     selector: 'app-login',
@@ -8,17 +11,32 @@ import {Eye, EyeOff, LucideAngularModule} from 'lucide-angular';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         RouterLink,
-        LucideAngularModule
+        LucideAngularModule,
+        InputField
     ]
 })
 
 export default class Login {
-    protected readonly showPassword = signal(false);
+    private readonly fb = inject(NonNullableFormBuilder);
 
-    togglePassword() {
-        this.showPassword.set(!this.showPassword());
+    readonly form = this.fb.group(
+        {
+            email: this.fb.control('', [Validators.required, Validators.email]),
+            password: this.fb.control('', [
+                Validators.required,
+                Validators.minLength(12),
+            ]),
+            confirmPassword: this.fb.control('', [Validators.required]),
+        },
+        {validators: confirmPasswordValidator},
+    );
+
+    async onSubmit() {
+        if (this.form.valid) {
+            console.log(this.form.value);
+        } else if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
     }
-
-    protected readonly Eye = Eye;
-    protected readonly EyeOff = EyeOff;
 }
