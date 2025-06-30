@@ -3,8 +3,9 @@
         class="bg-neutral-0 rounded-xl px-4 py-10 border-neutral-200 border-2 flex items-center flex-col justify-center gap-4 w-full md:max-w-[522px]">
         <img src="/logo.svg" alt="Logo de Notes"/>
         <div class="text-center">
-            <h1 class="text-2xl text-neutral-950 font-bold">Welcome to Note</h1>
-            <p class="text-sm text-neutral-600 mt-2">Please log in to continue</p>
+            <h1 class="text-2xl text-neutral-950 font-bold">Create Your Account</h1>
+            <p class="text-sm text-neutral-600 mt-2">Sign up to start organizing your notes and boost your
+                productivity.</p>
         </div>
         <form action="" class="w-full flex flex-col gap-4 mt-10">
             <app-input-field
@@ -29,7 +30,26 @@
 						required: 'Le mot de passe est requis',
 						minlength: 'Min. 12 caractères',
 					}"
-                [showPasswordTips]="false"
+                [showPasswordTips]="true"
+                [tipsContent]="[
+						'12 caractères minimum',
+						'1 majuscule, 1 minuscule',
+						'1 chiffre et 1 symbole',
+						'Évitez les mots simples',
+					]"
+            />
+
+            <app-input-field
+                [id]="'confirmPassword'"
+                [label]="'Confirmer le mot de passe'"
+                [type]="'password'"
+                [placeholder]="'Répétez le mot de passe'"
+                [required]="true"
+                [control]="form.controls.confirmPassword"
+                [errorMessages]="{
+						required: 'La confirmation est requise',
+					}"
+                [confirmPassword]="true"
             />
             <button type="submit"
                     class="bg-blue-500 text-neutral-0 rounded-lg py-3 font-semibold custom-transition hover:bg-blue-500/80">
@@ -47,12 +67,12 @@
         </div>
         <hr class="h-[1px] border-neutral-200 w-full">
         <span class="text-sm text-neutral-600">
-            No account yet?
+            Already have an account?
             <a
-                routerLink="/register"
+                routerLink="/login"
                 class="relative inline-block text-neutral-950 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
             >
-                Sign Up
+                Login
             </a>
         </span>
     </section>

@@ -9,6 +9,11 @@ export const routes: Routes = [
     {
         path: "",
         loadChildren: () =>
-            import('@core/layouts/auth-layout/auth-route').then((m) => m.routes),
+            import('@core/layouts/auth-layout/auth-route'),
+    },
+    {
+        path: "",
+        loadChildren: () =>
+            import('@core/layouts/notes-dashboard/notes-dashboard-route'),
     }
 ];

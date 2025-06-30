@@ -102,3 +102,11 @@
         animation: fade-in 0.2s ease-out both;
     }
 }
+
+.notes {
+    height: calc(100dvh - 56px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-neutral-950
+}

@@ -1,15 +1,15 @@
 import type {Routes} from '@angular/router';
 import AuthLayout from './auth-layout';
 
-export const routes: Routes = [
+const routes: Routes = [
     {
         path: '',
         component: AuthLayout,
         children: [
-            // {
-            //     path: 'inscription',
-            //     loadComponent: () => import('@features/auth/register/register'),
-            // },
+            {
+                path: 'register',
+                loadComponent: () => import('@features/auth/pages/register/register'),
+            },
             {
                 path: 'login',
                 loadComponent: () => import('@features/auth/pages/login/login'),
@@ -22,3 +22,5 @@ export const routes: Routes = [
         ],
     },
 ];
+
+export default routes
