@@ -1,30 +1,20 @@
-import {Component, effect, inject, signal} from '@angular/core';
-import {NotesService} from '@core/notes/notes-service';
-import {Note} from '@core/notes/notes-model';
-import {DatePipe} from '@angular/common';
-import {BottomNav} from '@core/layouts/bottom-nav/bottom-nav';
+import {Component, inject} from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {map} from 'rxjs';
+import NotesDashboardDesktop from '@core/layouts/notes-dashboard/desktop/notes-dashboard-desktop';
+import NotesDashboardMobile from '@core/layouts/notes-dashboard/mobile/notes-dashboard-mobile';
 
 @Component({
     selector: 'app-notes-dashboard',
     templateUrl: './notes-dashboard.html',
     imports: [
-        DatePipe,
-        BottomNav
+        NotesDashboardDesktop,
+        NotesDashboardMobile
     ]
 })
 
 export default class NotesDashboard {
-    private readonly notesService = inject(NotesService)
-    protected readonly notes = signal<Note[]>([])
-
-    constructor() {
-        effect(async () => {
-            try {
-                const notes = await this.notesService.getAllNotesWithTags();
-                this.notes.set(notes);
-            } catch (error) {
-                console.error('Erreur lors de la récupération des notes :', error);
-            }
-        })
-    }
+    isDesktop = inject(BreakpointObserver)
+        .observe('(min-width: 1200px)')
+        .pipe(map(result => result.matches));
 }

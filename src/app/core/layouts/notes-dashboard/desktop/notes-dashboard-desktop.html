@@ -1,0 +1,110 @@
+<div
+    class="hidden lg:grid h-screen w-full bg-neutral-0 grid-rows-[auto_1fr] grid-cols-[250px_350px_1fr_350px]"
+>
+
+    <aside class="row-span-2 p-4 border-r border-neutral-200" aria-label="Sidebar">
+        <header class="pt-4">
+            <img src="/logo.svg" alt="Logo de Notes"/>
+        </header>
+        <nav class="flex flex-col gap-1 mt-6 mb-2">
+            <a
+                routerLink="/dashboard"
+                routerLinkActive="bg-neutral-100"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="flex items-center gap-2 rounded-md px-3 py-3 hover:bg-neutral-50 transition duration-300 ease-in-out text-neutral-950"
+                #rlaDashboard="routerLinkActive"
+            >
+                <lucide-icon
+                    [img]="Home"
+                    [class]="rlaDashboard.isActive ? 'text-blue-500' : ''"
+                    class="size-5"
+                />
+                <span class="text-sm font-medium">All Notes</span>
+            </a>
+            <a
+                routerLink="/archived"
+                routerLinkActive="bg-neutral-100"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="flex items-center gap-2 rounded-md px-3 py-3 hover:bg-neutral-50 transition duration-300 ease-in-out text-neutral-950"
+                #rlaArchived="routerLinkActive"
+            >
+                <lucide-icon
+                    [img]="Home"
+                    [class]="rlaArchived.isActive ? 'text-blue-500' : ''"
+                    class="size-5"
+                />
+                <span class="text-sm font-medium">Archived Notes</span>
+            </a>
+        </nav>
+        <hr class="h-[1px] bg-neutral-200 border-none">
+        <div class="flex flex-col gap-2">
+            <h3 class="pt-2 text-sm font-medium text-neutral-500 pl-2">
+                Tags
+            </h3>
+            <ul class="flex flex-col gap-1">
+                @for (item of tags(); track item.id) {
+                    <li class="p-3 rounded-md hover:bg-neutral-50 transition text-neutral-700 duration-300 ease-in-out">
+                        <a
+                            [routerLink]="['/tags', item.name.toLowerCase()]"
+                            class="flex items-center gap-2"
+                        >
+                            <lucide-icon [img]="Tag" class="size-5"/>
+                            <span class="text-sm font-medium">{{ item.name }}</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </aside>
+    <header
+        class="col-span-3 py-6 flex items-center justify-between px-8 border-b border-neutral-200 w-full"
+    >
+        <h1 class="text-2xl flex-1">All Notes</h1>
+
+        <div class="flex gap-4 items-center justify-end flex-1">
+            <div class="relative w-full max-w-[300px]">
+                <lucide-icon
+                    [img]="Search"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 text-neutral-400 size-5"
+                />
+                <input
+                    type="text"
+                    placeholder="Search by title, content, or tags..."
+                    class="w-full py-2 border pl-12 border-neutral-300 rounded-lg text-sm placeholder-neutral-500"
+                />
+            </div>
+            <lucide-icon [img]="Settings" class="text-neutral-500"/>
+        </div>
+    </header>
+
+    <section class="overflow-y-auto px-8 relative border-r border-neutral-200">
+        <div class="bg-neutral-0 pt-5 w-full sticky top-0">
+            <button
+                class="rounded-lg bg-blue-500 text-neutral-0 flex items-center justify-center py-3 w-full mb-4 text-sm font-medium custom-transition hover:bg-blue-500/90"
+            >
+                <lucide-icon [img]="Plus" class="size-5"/>
+                Create New Note
+            </button>
+        </div>
+        <app-notes/>
+    </section>
+
+    <main class="bg-blue-100 p-6 overflow-y-auto">
+        Détail de la note
+    </main>
+    
+    <aside class="px-8 pt-5 border-l border-neutral-200 overflow-y-auto" aria-label="Actions">
+        <div class="flex flex-col gap-4">
+            <button
+                class="border border-neutral-300 flex gap-4 items-center rounded-lg py-4 text-neutral-950 px-4"
+            >
+                <lucide-icon [img]="Archive"/>
+                <span class="text-sm font-medium">Archive Note</span>
+            </button>
+            <button class="border border-neutral-300 flex gap-4 items-center rounded-lg py-4 text-neutral-950 px-4">
+                <lucide-icon [img]="Trash"/>
+                <span class="text-sm font-medium">Delete Note</span>
+            </button>
+        </div>
+    </aside>
+</div>
