@@ -2,12 +2,14 @@ import {Component, effect, inject, signal} from '@angular/core';
 import {NotesService} from '@core/notes/notes-service';
 import {Note} from '@core/notes/notes-model';
 import {DatePipe} from '@angular/common';
+import {BottomNav} from '@core/layouts/bottom-nav/bottom-nav';
 
 @Component({
     selector: 'app-notes-dashboard',
     templateUrl: './notes-dashboard.html',
     imports: [
-        DatePipe
+        DatePipe,
+        BottomNav
     ]
 })
 

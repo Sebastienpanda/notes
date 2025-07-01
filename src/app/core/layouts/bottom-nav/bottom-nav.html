@@ -1,0 +1,20 @@
+<nav
+    class="absolute bottom-0 bg-neutral-0 w-full shadow-md border-t-[1px] border-t-neutral-200 py-3 lg:hidden">
+    <ul class="flex justify-between container">
+        @for (item of nav; track item.title; let isLast = $last) {
+            <li>
+                <a [routerLink]="item.link" routerLinkActive="bg-blue-50 text-blue-500 "
+                   class="block py-1 px-3 rounded-sm hover:bg-blue-50 hover:text-blue-500 custom-animation md:flex md:items-center md:flex-col md:px-7"
+                   [routerLinkActiveOptions]="{ exact: true }" [title]="item.title">
+                    <lucide-icon [img]="item.icon" size="24"/>
+                    <span class="text-xs hidden md:block">
+                        {{ item.title }}
+                    </span>
+                </a>
+            </li>
+            @if (!isLast) {
+                <hr class="h-11 w-[1px] bg-neutral-200 border-none hidden md:block">
+            }
+        }
+    </ul>
+</nav>
