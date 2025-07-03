@@ -1,0 +1,33 @@
+<section class="px-4">
+    <div class="mt-4">
+        <form>
+            <input type="text"
+                   placeholder="Enter a title…"
+                   class="border-none w-full placeholder:text-2xl placeholder:text-neutral-950 placeholder:font-bold pb-4 h-5 text-neutral-950 pl-0"/>
+            <div class="my-3 border-b border-neutral-200">
+                <div class="flex items-center gap-4 text-sm py-1">
+                    <div class="flex items-center gap-2 text-neutral-700">
+                        <lucide-icon [img]="Tag" size="16"/>
+                        <span class="text-sm font-medium">Tags</span>
+                    </div>
+                    <input type="text" placeholder="Add tags separated by commas (e.g. Work, Planning)"
+                           class="border-none h-5 text-sm w-full placeholder:text-neutral-400 text-neutral-950"/>
+                </div>
+
+                <div class="flex items-center gap-4 text-sm py-1">
+                    <div class="flex items-center gap-2 text-neutral-700">
+                        <lucide-icon [img]="Clock" size="16"/>
+                        <span class="text-sm font-medium">Last edited</span>
+                    </div>
+                    <div class="text-neutral-400 text-sm">
+                        Not yet saved
+                    </div>
+                </div>
+            </div>
+            <textarea
+                class="w-full border-none pl-0 placeholder:text-neutral-700 text-neutral-700"
+                placeholder="Start typing your note here…"
+            ></textarea>
+        </form>
+    </div>
+</section>

@@ -6,6 +6,7 @@ import {NotesStore} from '@core/store/notes-store';
 import {NotesSelected} from '@features/notes-dashboard/notes-selected/notes-selected';
 import {TagsService} from '@core/tags/tags-service';
 import {Tag as TagModel} from '@core/tags/tags-model';
+import {CreateNoteComponent} from '@features/notes-dashboard/notes/pages/create-note';
 
 @Component({
     selector: 'app-notes-dashboard-desktop',
@@ -15,7 +16,8 @@ import {Tag as TagModel} from '@core/tags/tags-model';
         LucideAngularModule,
         RouterLink,
         RouterLinkActive,
-        NotesSelected
+        NotesSelected,
+        CreateNoteComponent
     ]
 })
 
@@ -33,6 +35,7 @@ export default class NotesDashboardDesktop {
 
     protected readonly notesStore = inject(NotesStore);
     protected readonly tagsService = inject(TagsService);
+    protected readonly createNote = signal(false)
 
     protected readonly tags = signal<TagModel[]>([])
 
@@ -46,6 +49,12 @@ export default class NotesDashboardDesktop {
                 console.error('Erreur lors de la récupération des notes :', error);
             }
         })
+
+        effect(() => {
+            if (this.notesStore.selectedNote()) {
+                this.createNote.set(false);
+            }
+        });
     }
 
     selectedNoteId() {
@@ -53,6 +62,12 @@ export default class NotesDashboardDesktop {
     }
 
     goBack() {
+        this.notesStore.clear();
+        this.createNote.set(false);
+    }
+
+    createNewNote() {
+        this.createNote.set(true);
         this.notesStore.clear();
     }
 }
