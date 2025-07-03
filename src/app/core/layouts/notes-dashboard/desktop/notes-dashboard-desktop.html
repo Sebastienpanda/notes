@@ -37,19 +37,19 @@
             </a>
         </nav>
         <hr class="h-[1px] bg-neutral-200 border-none">
-        <div class="flex flex-col gap-2">
-            <h3 class="pt-2 text-sm font-medium text-neutral-500 pl-2">
+        <div class="flex flex-col gap-2 overflow-y-auto h-212">
+            <h3 class="pt-2 text-sm font-medium text-neutral-500 pl-2 sticky top-0 w-full bg-neutral-0">
                 Tags
             </h3>
             <ul class="flex flex-col gap-1">
                 @for (item of tags(); track item.id) {
                     <li class="p-3 rounded-md hover:bg-neutral-50 transition text-neutral-700 duration-300 ease-in-out">
                         <a
-                            [routerLink]="['/tags', item.name.toLowerCase()]"
+                            [routerLink]="['/tags', item.tag.toLowerCase()]"
                             class="flex items-center gap-2"
                         >
                             <lucide-icon [img]="Tag" class="size-5"/>
-                            <span class="text-sm font-medium">{{ item.name }}</span>
+                            <span class="text-sm font-medium">{{ item.tag }}</span>
                         </a>
                     </li>
                 }
@@ -89,10 +89,25 @@
         <app-notes/>
     </section>
 
-    <main class="bg-blue-100 p-6 overflow-y-auto">
-        Détail de la note
+    <main class="px-6 my-6 overflow-y-auto relative">
+        @if (selectedNoteId()) {
+            <app-notes-selected [noteId]="selectedNoteId()"/>
+            <div class="absolute bottom-0 flex gap-4 pt-4 border-t border-neutral-200 w-[calc(100%-48px)]">
+                <button
+                    class="bg-blue-500 text-neutral-0 hover:bg-blue-500/80 custom-transition rounded-lg py-3 px-4 text-sm font-medium">
+                    Save
+                </button>
+                <button class="rounded-lg bg-neutral-100 text-neutral-600 py-3 px-4 text-sm font-medium"
+                        (click)="goBack()">Cancel
+                </button>
+            </div>
+        } @else {
+            <div class="text-neutral-400 text-sm text-center mt-20">
+                Select a note to view its content
+            </div>
+        }
     </main>
-    
+
     <aside class="px-8 pt-5 border-l border-neutral-200 overflow-y-auto" aria-label="Actions">
         <div class="flex flex-col gap-4">
             <button

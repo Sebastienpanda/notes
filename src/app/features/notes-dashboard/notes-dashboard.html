@@ -1,4 +1,4 @@
-@if (isDesktop) {
+@if (isDesktop | async) {
     <app-notes-dashboard-desktop/>
 } @else {
     <app-notes-dashboard-mobile/>

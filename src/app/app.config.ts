@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
         provideZonelessChangeDetection(),
         provideRouter(routes),
         provideAnimationsAsync(),
-        provideHttpClient(withFetch())
+        provideHttpClient(withFetch()),
     ]
 };

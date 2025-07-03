@@ -23,4 +23,24 @@ export class NotesService {
 
         return data
     }
+
+    async getNoteById(noteId: string) {
+        const {data, error} = await supabase
+            .from('notes')
+            .select(`
+            *,
+            tags (
+                tag
+            )
+        `)
+            .eq('id', noteId)
+            .single();
+
+        if (error) {
+            console.error('Erreur lors de la récupération de la note :', error);
+            throw error;
+        }
+
+        return data;
+    }
 }
